@@ -26,6 +26,13 @@
         .verso { background: var(--cor-primaria); color: white; font-size: 2rem; }
         .frente { transform: rotateY(180deg); }
         .frente img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+
+        @media screen and (max-width: 600px) {
+                    .timeline::after { left: 31px; } /* Move a linha vertical para a esquerda */
+                    .container-timeline { width: 100% !important; padding-left: 70px !important; float: none !important; } /* Empilha os blocos */
+                    .container-timeline::after { left: 18px !important; } /* Ajusta o coração */
+                    .esquerda, .direita { left: 0% !important; text-align: left !important; } /* Alinha tudo à esquerda */
+                }
     </style>
 </head>
 <body>
