@@ -5,17 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para o Meu Amor ❤️</title>
     <style>
-        :root {
-            --cor-fundo: #fff5f5;
-            --cor-primaria: #ff4d6d;
-            --cor-secundaria: #ff758f;
-            --cor-texto: #4a4a4a;
-        }
-
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--cor-fundo); color: var(--cor-texto); margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
-        header { text-align: center; padding: 50px 20px; background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria)); color: white; width: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h1 { margin: 0 0 10px 0; font-size: 2.5rem; }
-        #contador { font-size: 1.2rem; font-weight: bold; background: rgba(255, 255, 255, 0.2); padding: 15px; border-radius: 10px; display: inline-block; margin-top: 15px; backdrop-filter: blur(5px); }
+        :root { --cor-fundo: #fff5f5; --cor-primaria: #ff4d6d; --cor-secundaria: #ff758f; --cor-texto: #4a4a4a; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--cor-fundo); color: var(--cor-texto); margin: 0; display: flex; flex-direction: column; align-items: center; }
         
         .timeline { position: relative; max-width: 800px; margin: 50px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
         .timeline::after { content: ''; position: absolute; width: 4px; background-color: var(--cor-primaria); top: 0; bottom: 0; left: 50%; margin-left: -2px; }
@@ -25,7 +16,7 @@
         .direita { left: 50%; text-align: left; }
         .direita::after { left: -14px; }
         .conteudo { padding: 20px; background-color: white; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .conteudo img { width: 100%; height: 250px; object-fit: cover; object-position: top; border-radius: 10px; margin-top: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);}
+        .conteudo img { width: 100%; height: 250px; object-fit: cover; object-position: top; border-radius: 10px; margin-top: 15px; }
 
         .secao-jogo { width: 100%; max-width: 600px; margin: 50px auto; text-align: center; clear: both; }
         .tabuleiro { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 20px; }
@@ -33,36 +24,23 @@
         .carta.virada { transform: rotateY(180deg); }
         .face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
         .verso { background: var(--cor-primaria); color: white; font-size: 2rem; }
-        .frente { background: #fff; transform: rotateY(180deg); }
+        .frente { transform: rotateY(180deg); }
         .frente img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
-        #mensagem-vitoria { display: none; padding: 20px; margin-top: 20px; font-weight: bold; }
-
-        @media screen and (max-width: 600px) {
-            .timeline::after { left: 31px; }
-            .container-timeline { width: 100% !important; padding-left: 70px !important; float: none !important; }
-            .container-timeline::after { left: 18px !important; }
-            .esquerda, .direita { left: 0% !important; text-align: left !important; }
-        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Para Quem Deixou Meu Mundo Mais Colorido</h1>
-        <div id="contador">1791 Dias ao lado do meu grande amor</div>
-    </header>
-
     <section class="timeline">
         <div class="container-timeline esquerda"><div class="conteudo"><h3>O Primeiro De Muitas Fotos 📸</h3><p>O dia em que tiramos nossa primeira foto juntos...</p><img src="primeira.jpeg"></div></div>
         <div class="container-timeline direita"><div class="conteudo"><h3>Um Dos Momentos Marcantes</h3><p>Aquele frio na barriga. Quando conheci a sua familia kkkk</p><img src="sitio.jpeg"></div></div>
-        <div class="container-timeline esquerda"><div class="conteudo"><h3>Mais um Capítulo Nosso 💖</h3><p>Memórias inesquecíveis. Quero para sempre em todo minha vida ter memorias boas com você. Meu amor</p><img src="dianamorados.jpeg"></div></div>
-        <div class="container-timeline direita"><div class="conteudo"><h3>Minha Pessoa Favorita no Mundo!</h3><p>Te amarei eternamente. Você é muito importante na minha vida</p><img src="juliete.jpeg"></div></div>
+        <div class="container-timeline esquerda"><div class="conteudo"><h3>Mais um Capítulo Nosso 💖</h3><p>O dia que fomos no tripfood. Quero para sempre em todo minha vida ter memorias boas com você. Meu amor</p><img src="dianamorados.jpeg"></div></div>
+        <div class="container-timeline direita"><div class="conteudo"><h3>Minha Pessoa Favorita</h3><p>Te amarei eternamente. Em todas as minhas orações a noite peço que nosso amor seja eterno e que sempre nos apaixonamos mais um pelo outro. EU TE AMO MEU AMOR</p><img src="juliete.jpeg"></div></div>
     </section>
 
     <section class="secao-jogo">
         <h2>Nosso Jogo da Memória 🧩</h2>
         <div class="tabuleiro" id="tabuleiro"></div>
-        <div id="mensagem-vitoria"><h2>Você Conseguiu! 🎉❤️</h2></div>
+        <div id="mensagem-vitoria" style="display:none;"><h2>Você Conseguiu! 🎉❤️</h2></div>
     </section>
 
     <audio id="audioVitoria" src="musica.mp3"></audio>
@@ -91,20 +69,17 @@
         }
 
         function checarPar() {
-            if (primeiraCarta.dataset.imagem === segundaCarta.dataset.imagem) {
+            bloqueiaTabuleiro = true;
+            let eIgual = primeiraCarta.dataset.imagem === segundaCarta.dataset.imagem;
+            if (eIgual) {
                 pares++;
-                if (pares === imagensJogo.length) {
-                    document.getElementById('audioVitoria').play();
-                    document.getElementById('mensagem-vitoria').style.display = 'block';
-                }
-                primeiraCarta = null; segundaCarta = null;
+                if (pares === imagensJogo.length) { document.getElementById('audioVitoria').play(); document.getElementById('mensagem-vitoria').style.display = 'block'; }
+                primeiraCarta = null; segundaCarta = null; bloqueiaTabuleiro = false;
             } else {
-                bloqueiaTabuleiro = true;
                 setTimeout(() => {
                     primeiraCarta.classList.remove('virada');
                     segundaCarta.classList.remove('virada');
-                    primeiraCarta = null; segundaCarta = null;
-                    bloqueiaTabuleiro = false;
+                    primeiraCarta = null; segundaCarta = null; bloqueiaTabuleiro = false;
                 }, 1000);
             }
         }
